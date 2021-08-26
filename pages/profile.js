@@ -16,15 +16,18 @@ import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 const notes = [
   {
     name: 'Cypress Request Cypress Request Cypress Request',
-    description: "description"
+    description: "description",
+    code: 'code',
   },
   {
     name: 'Cypress Request2',
-    description: "description 2"
+    description: "description 2",
+    code: 'code2',
   },
   {
     name: 'Cypress Request 3',
-    description: "description 3"
+    description: "description 3",
+    code: 'code3',
   },
 ]
 
