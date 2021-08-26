@@ -92,7 +92,7 @@ const ErrorSection = (<div style={{minHeight: '85vh', display: 'flex', justifyCo
         </Head>
   
         <main >
-          <Navbar/>
+          <Navbar v='block'/>
           <div style={{minHeight: '85vh',  marginTop: '40px'}} className={styles.container}>
             <div>
               <h2 style={{textAlign: 'center'}}>Welcome</h2>
