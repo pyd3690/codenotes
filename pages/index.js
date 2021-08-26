@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import Link from 'next/link'
 import styles from '../styles/Home.module.css'
 import Footer from '../components/footer/footer.js'
 import Navbar from '../components/nav/nav.js'
@@ -16,9 +17,9 @@ export default function Home() {
                   <h2 style={{textAlign: 'center'}}>Welcome to CodeNotes</h2>
                   <h3 style={{textAlign: 'center', fontWeight: '300'}}>All your coding notes in one place</h3>
                   <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                    <a href="/api/auth/login">
+                    <Link href="/api/auth/login" passHref>
                       <Button variant="dark" style={{margin: '10px'}}>Sign Up / Sign In</Button>
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>);
