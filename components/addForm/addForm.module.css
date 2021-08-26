@@ -1,13 +1,11 @@
 .addNotesForm{
-  display: 'none'; 
-  margin-top: '20px';
+  margin-top: '50px';
   width: 100%;   
 }
 
 @media only screen and (max-width: 600px) {
     .addNotesForm{      
-      display: 'none'; 
-      margin-top: '20px';
+      margin-top: '40px';
       width: 100%;
     
     } 

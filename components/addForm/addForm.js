@@ -42,7 +42,7 @@ export default function AddNote(){
 
     return(
         <div id="addNotesForm" className={styles.addNotesForm}>
-            <h5>New Note</h5>
+            <h5 style={{marginTop: '40px'}}>New Note</h5>
           <Form noValidate validated={validated} onSubmit={handleSubmit}>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                 <Form.Label>Note Name</Form.Label>

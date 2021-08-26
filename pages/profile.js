@@ -101,7 +101,7 @@ const ErrorSection = (<div style={{minHeight: '85vh', display: 'flex', justifyCo
               <h2 style={{textAlign: 'center'}}>Welcome</h2>
               <h3 style={{textAlign: 'center', fontWeight: '300'}}>Account: {user.email}</h3>
               
-              <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+              {/* <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                   <Button 
                     variant="dark" 
                     style={{margin: '10px'}}
@@ -109,7 +109,7 @@ const ErrorSection = (<div style={{minHeight: '85vh', display: 'flex', justifyCo
                   >
                     Add Notes
                   </Button>
-              </div>
+              </div> */}
               
               <div  style={{display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom: '30px'}}>
                   <AddNote />
