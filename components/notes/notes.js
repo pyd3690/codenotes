@@ -12,10 +12,10 @@ export default function NotesList(props){
                                     props.notes.map((note)=> 
                                         <ListGroup.Item key={note.name}>
                                             <div style={{display: 'flex', justifyContent: 'space-between'}}>
-                                                <div className = {styles.item} style = {{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis'}}> {note.name}</div>
+                                                <div className = {styles.item} style = {{backgroundColor:'#C7D8E9', borderRadius: '5px', padding: '5px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis'}}> {note.name}</div>
                                                 <div style={{display: 'flex', justifyContent: 'space-around', width: '30%'}}>
-                                                    <Button variant="dark">Edit</Button>
-                                                    <Button variant="dark">X</Button>   
+                                                    <Button variant="dark" className={styles.button}>Edit</Button>
+                                                    <Button variant="dark" className={styles.button}>X</Button>   
                                                 </div>
                                             </div>
                                         </ListGroup.Item>

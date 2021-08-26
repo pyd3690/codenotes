@@ -30,9 +30,6 @@ const notes = [
 
 export default function Profile() {
   const { user, error, isLoading } = useUser();
-  if(user){
-    document.getElementById("logout").style.display = "block";
-  }
 
   const Loading = (<div style={{minHeight: '85vh', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                     <div>
@@ -82,8 +79,12 @@ const ErrorSection = (<div style={{minHeight: '85vh', display: 'flex', justifyCo
 
   
 
-  return (
-    user && (<div >
+  if(user){
+    document.getElementById("logout").style.display = "block";
+
+
+    return (
+    <div >
         <Head>
           <title>Code Notes - Profile</title>
           <meta name="description" content="All your coding notes in one place." />
@@ -119,7 +120,23 @@ const ErrorSection = (<div style={{minHeight: '85vh', display: 'flex', justifyCo
           </div>
           <Footer/>        
         </main>
-      </div>)
+      </div>
+    )}
+
+    return (
+      <div >
+        <Head>
+          <title>Code Notes</title>
+          <meta name="description" content="All your coding notes in one place." />
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
+  
+        <main >
+          <Navbar/>
+            
+          <Footer/>        
+        </main>
+      </div>
     )
 }
 
