@@ -30,6 +30,9 @@ const notes = [
 
 export default function Profile() {
   const { user, error, isLoading } = useUser();
+  if(user){
+    document.getElementById("logout").style.display = "block";
+  }
 
   const Loading = (<div style={{minHeight: '85vh', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                     <div>
@@ -77,9 +80,7 @@ const ErrorSection = (<div style={{minHeight: '85vh', display: 'flex', justifyCo
       </div>
     )}
 
-  if(user){
-    document.getElementById("logout").style.display = "block";
-  }
+  
 
   return (
     user && (<div >
