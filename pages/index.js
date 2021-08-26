@@ -26,7 +26,7 @@ export default function Home() {
 
   const Loading = (<div style={{minHeight: '85vh', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                     <div>
-                      <h3 style={{textAlign: 'center', fontWeight: '300'}}>Authenticating...</h3>
+                      <h3 style={{textAlign: 'center', fontWeight: '300'}}>Loading...</h3>
                     </div>
                   </div>);
 
