@@ -10,7 +10,7 @@ export default function NotesList(props){
                             <ListGroup>
                                 {
                                     props.notes.map((note)=> 
-                                        <ListGroup.Item>
+                                        <ListGroup.Item key={note.name}>
                                             <div style={{display: 'flex', justifyContent: 'space-between'}}>
                                                 <div className = {styles.item} style = {{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis'}}> {note.name}</div>
                                                 <div style={{display: 'flex', justifyContent: 'space-around', width: '30%'}}>
