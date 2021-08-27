@@ -16,19 +16,25 @@ import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 
 const notes = [
   {
-    name: 'Cypress Request Cypress Request Cypress Request',
-    description: "description",
-    code: 'code',
+    name: 'Cypress Fixture',
+    description: "Access fixture",
+    code: `before(function () {
+      cy.fixture('example').then(function (data) {
+        this.data = data;
+      })
+    })e`,
   },
   {
-    name: 'Cypress Request2',
-    description: "description 2",
-    code: 'code2',
+    name: 'Cypress Hooks',
+    description: "Before and After Test",
+    code: `afterEach('some description', function() {
+      // Steps which need to be executed after each of the tests which finished execution
+    });`,
   },
   {
-    name: 'Cypress Request 3',
-    description: "description 3",
-    code: 'code3',
+    name: 'Cypress Custom Command',
+    description: "Custome Command",
+    code: 'Cypress.Commands.add(name, callbackFn)',
   },
 ]
 
@@ -118,7 +124,7 @@ const ErrorSection = (<div style={{minHeight: '85vh', display: 'flex', justifyCo
 
               <h3 style={{textAlign: 'center', fontWeight: '300'}}>Your Notes</h3>
               <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom: '30px'}}>
-                <NotesList notes={allNotes} />
+                <NotesList notes={notes} />
               </div>
             </div>
           </div>
@@ -144,7 +150,8 @@ const ErrorSection = (<div style={{minHeight: '85vh', display: 'flex', justifyCo
     )
 }
 
-export const getServerSideProps = withPageAuthRequired({
+export const getServerSideProps = withPageAuthRequired(
+  /* {
   async getServerSideProps(ctx) {
 
   //var email = userEmail.replaceAll(".", "+")
@@ -156,5 +163,6 @@ export const getServerSideProps = withPageAuthRequired({
   // Pass data to the page via props
   return { props: { allNotes } }
   }
-});
+} */
+);
 

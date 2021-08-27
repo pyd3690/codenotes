@@ -8,8 +8,11 @@ const client = new MongoClient(url);
  const dbName = process.env.MONGODB_DB //"test";
 
  export default async function handler(req, res) {
-    try {
-         const { uid } = req.query
+    try {         
+        const { uid } = req.query
+        //var email = uid.toString().replaceAll("#**#", ".")
+        var email = uid//.toString().replace(/+++/g, '.');
+
         var response = "";
          await client.connect();
          console.log("Connected correctly to server");
@@ -18,7 +21,7 @@ const client = new MongoClient(url);
          // Use the collection "people"
          const col = db.collection("notes");
         var allNotes = [];
-         var userNotes = await col.findOne( { 'user': 'prenaamd@gmail.com' } )
+         var userNotes = await col.findOne( { 'user': email } )
          if(userNotes){
             allNotes = userNotes.notes;            
          }

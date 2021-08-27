@@ -10,6 +10,7 @@ const client = new MongoClient(url);
  export default async function handler(req, res) {
     try {
         var response = "";
+        var returnData = {}
          await client.connect();
          console.log("Connected correctly to server");
          const db = client.db(dbName);
@@ -21,8 +22,10 @@ const client = new MongoClient(url);
          if(userNotes){
             var newNotes = userNotes.notes;
             var existing = newNotes.filter(note => note.name === req.body.name)
-            if(existing.length == 0){
+            if(existing.length !== 0){
                 response = 'A note with the same name already exists'
+                returnData = {"user": req.body.user,
+                "notes": newNotes}
             }
             else{
             newNotes.push({
@@ -33,6 +36,8 @@ const client = new MongoClient(url);
             col.updateOne({ 'user': req.body.user }, {$set: {'notes':  newNotes}});
             //console.log('User ' + req.body.user + ' notes added successfully')
             response = 'User ' + req.body.user + ' notes added successfully'}
+            returnData = {"user": req.body.user,
+                "notes": newNotes}
          }
          else{
             let userDocument = {
@@ -48,9 +53,11 @@ const client = new MongoClient(url);
             const p = await col.insertOne(userDocument);
             //console.log('User ' + req.body.user + ' document created successfully')
             response = 'User ' + req.body.user + ' document created successfully'
+            returnData = userDocument
+
          }
         //console.log(req.body)
-         res.status(200).json({"message": response})
+         res.status(200).json({"message": response, "newData": returnData})
         
          /* // Construct a document                                                                                                                                                              
          let personDocument = {
