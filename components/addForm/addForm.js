@@ -1,4 +1,5 @@
 import {React, useState} from 'react';
+import { useUser } from "@auth0/nextjs-auth0";
 
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button';
@@ -6,6 +7,7 @@ import Button from 'react-bootstrap/Button';
 import styles from './addForm.module.css'
 
 export default function AddNote(){
+    const { user, error, isLoading } = useUser();
     const [validated, setValidated] = useState(false);
     const [note, setNote] = useState({
         'name': "",
@@ -35,10 +37,21 @@ export default function AddNote(){
             console.log("invalid form")
             return;
         }
-
         console.log(note)
+        var note1 = note
+        note1['user'] = (user)?user.email:'none'
+        const res = await fetch('/api/notes/add', {
+            body: JSON.stringify(note1),
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            method: 'POST'
+          })
+      
+          const result = await res.json()
+          alert(result.message)
+        console.log(result)
     };
-
 
     return(
         <div id="addNotesForm" className={styles.addNotesForm}>

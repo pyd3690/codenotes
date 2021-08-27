@@ -12,6 +12,7 @@ import Button from 'react-bootstrap/Button';
 import { useUser } from "@auth0/nextjs-auth0";
 import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 
+//var userEmail = ""
 
 const notes = [
   {
@@ -31,7 +32,7 @@ const notes = [
   },
 ]
 
-export default function Profile() {
+export default function Profile({allNotes}) {
   const { user, error, isLoading } = useUser();
 
   const Loading = (<div style={{minHeight: '85vh', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
@@ -85,7 +86,7 @@ const ErrorSection = (<div style={{minHeight: '85vh', display: 'flex', justifyCo
   if(user){
     document.getElementById("logout").style.display = "block";
 
-
+    //userEmail = user.email;
     return (
     <div >
         <Head>
@@ -117,7 +118,7 @@ const ErrorSection = (<div style={{minHeight: '85vh', display: 'flex', justifyCo
 
               <h3 style={{textAlign: 'center', fontWeight: '300'}}>Your Notes</h3>
               <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom: '30px'}}>
-                <NotesList notes={notes} />
+                <NotesList notes={allNotes} />
               </div>
             </div>
           </div>
@@ -143,4 +144,17 @@ const ErrorSection = (<div style={{minHeight: '85vh', display: 'flex', justifyCo
     )
 }
 
-export const getServerSideProps = withPageAuthRequired();
+export const getServerSideProps = withPageAuthRequired({
+  async getServerSideProps(ctx) {
+
+  //var email = userEmail.replaceAll(".", "+")
+
+  const res = await fetch("https://codenotes.vercel.app/api/notes/all")//('http://localhost:3000/api/notes/all')
+  const data = await res.json()
+  const allNotes = data.notes
+    console.log(allNotes)
+  // Pass data to the page via props
+  return { props: { allNotes } }
+  }
+});
+
